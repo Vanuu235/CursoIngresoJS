@@ -12,18 +12,68 @@ hasta que el usuario quiera, mostrar:
 9-Diferencia entre positivos y negativos, (positvos-negativos). */
 function mostrar()
 {
-	//declarar contadores y variables 
+	
 	var respuesta;
 	var numeroIngresado;
-	var sumaNegativos=0;
+	var sumaNegativos;
+	var sumaPositivos;
+	var contadorPositivos;
+	var contadorNegativos;
+	var ceros;
+	var pares;
+	var promPositivos;
+	var promNegativos;
 
 	respuesta="si";
+	sumaPositivos=0;
+	sumaNegativos=0;
+	contadorPositivos=0;
+	contadorNegativos=0;
+	ceros=0;
+	pares=0;
 
 	while(respuesta=="si")
 	{
-		
-		respuesta=prompt("desea continuar?");
-	}//fin del while
+		numeroIngresado=prompt("Ingrese un número");
+		numeroIngresado=parseInt(numeroIngresado);
 
-	document.write("la suma de negativos es :"+sumaNegativos);
-}//FIN DE LA FUNCIÓN
+		if(numeroIngresado>0)
+		{
+			sumaPositivos=sumaPositivos+numeroIngresado;//sumaPositivos+= numeroIngresado
+			contadorPositivos++;
+		}
+
+		else
+		{
+			if(numeroIngresado<0)
+			{
+				sumaNegativos=sumaNegativos+numeroIngresado;
+				contadorNegativos++;
+			}
+			else
+			{
+				ceros++;
+			}
+		}
+		
+		if(numeroIngresado%2==0)
+		{
+			pares++;
+		}
+
+		respuesta=prompt("desea continuar?: si/no");
+	}
+	promPositivos=sumaPositivos/contadorPositivos;
+	promNegativos=sumaNegativos/contadorNegativos;
+
+	document.write("la suma de negativos es :"+ sumaNegativos + "<br>"); // salto de linea puede ser \n
+	document.write("La suma de los positivos es: " + sumaPositivos+"<br>");
+	document.write("La cantidad de negativos es: "+ contadorNegativos +"<br>");
+	document.write("La cantidad de positivos es: "+ contadorPositivos +"<br>");
+	document.write("La cantidad de ceros es: "+ ceros +"<br>");
+	document.write("La cantidad de pares es: "+ pares +"<br>");
+	document.write("El promedio de los positivos es: "+ promNegativos +"<br>");
+	document.write("El promedio de los negativos es: "+ promPositivos +"<br>");
+
+	}
+

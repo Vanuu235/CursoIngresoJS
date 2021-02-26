@@ -4,9 +4,12 @@ Al presionar el botón pedir un sexo
 function mostrar()
 {
 	var sexoIngresado;
-	sexoIngresado = prompt("ingrese f ó m .");
-
-
-
+	sexoIngresado = prompt("ingrese f ó m");
+	sexoIngresado=sexoIngresado.toLowerCase();//al ingresar la variable la transforma en minuscula
+			//.toUpperCase() lo convierte a mayuscula
+	while(sexoIngresado!="f"&&sexoIngresado!="m")
+	{
+		sexoIngresado = prompt("Sexo inválido, por favor ingrese f ó m");
+	}
 	txtIdSexo.value=sexoIngresado;
-}//FIN DE LA FUNCIÓN
+}

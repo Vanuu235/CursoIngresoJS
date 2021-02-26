@@ -1,4 +1,5 @@
-/*En esta oportunidad el juego evaluará tus
+/*
+En esta oportunidad el juego evaluará tus
  aptitudes a partir de la cantidad de intentos, 
  por lo cual se informará lo siguiente:
 1° intento: “usted es un Psíquico”.
@@ -11,18 +12,25 @@ Más de 10 intentos: “afortunado en el amor!!”.*/
 
 var numeroSecreto; 
 var contadorIntentos;
+var numeroIngresado;
+var mensaje;
+var positivo;
+
+contadorIntentos=0;
 
 function comenzar()
-{
-	//Genero el número RANDOM entre 1 y 100
-	 
-	
-
+{	 
+	numeroSecreto=Math.floor(Math.random()*100)+1;
 }
 
 function verificar()
 {
-	
+	numeroIngresado=txtIdNumero.value;
+	numeroIngresado=parseInt(numeroIngresado);
+	contadorIntentos++;
+	positivo=numeroIngresado!=numeroSecreto;
 	
 
+	alert(mensaje);
+	txtIdIntentos.value=contadorIntentos;
 }
