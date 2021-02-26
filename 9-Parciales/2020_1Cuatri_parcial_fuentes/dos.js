@@ -8,7 +8,7 @@ function mostrar()
 	var cantidadBolsas;
 	var respuesta;
 	var sumaBolsas;
-	var precio;
+	var precio;					/*falta NO mostrar el precio con decuento si son menos de 10*/
 	var precioTotal;
 	var precioConDescuento;
 	var contadorArena;
@@ -118,7 +118,7 @@ function mostrar()
 			{
 				mayorCantidad="cemento";
 			}
-	}
+		}
 	document.write("El total de la compra es de: "+precioTotal+"<br>");
 	document.write("Aplicando el descuento por llevar más unidades debe abonar: "+precioConDescuento+"<br>");
 	document.write("El producto con más bolsas compradas fue: "+mayorCantidad+"<br>");

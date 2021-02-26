@@ -3,110 +3,97 @@ function mostrar()
 	var i;
 	var nombre;
 	var edad;
-	var sexo;
+	var sexoIngresado;
 	var estadoCivil;
-	var temperatura;		/* revisar porque no funciona*/
+	var temperatura;
 	var respuesta;
-	var contadorM;
-	var contadorF;
+
+	var contadorViudo;
 	var contadorSoltero;
 	var contadorCasado;
-	var contadorViudo;
-	var contadorMayoresViudos;
-	var sumaEdadSolteros;
-	var promedioEdad;
-	var mayorTemperatura;
-	var nombreMayorTemperatura;
-	var flagMayorTemperatura;
+	var sumaViudo;
+	var sumaSoltero;
+	var sumaCasado;
 
 	i=0;
 	respuesta="si";
-	/*flagMayorTemperatura=0;
-	contadorM=0;
-	contadorF=0;
+
+	contadorViudo=0;
 	contadorSoltero=0;
 	contadorCasado=0;
-	contadorViudo=0;
-	sumaEdadSolteros=0;*/
+	sumaEdadViudo=0;
+	sumaEdadSoltero=0;
+	sumaEdadCasado=0;
 
-	while(respuesta=="si");
+	while(respuesta=="si")
 	{
-		nombre=prompt("Ingrese el nombre del pasajero");
 		i++;
+		nombre=prompt("Ingrese el nombre del pasajero");
 
 		sexo=prompt("ingrese f ó m");
 		sexo=sexo.toLowerCase();
-		if(sexo!="f"&&sexo!="m")
+		while(sexo!="f"&&sexo!="m")
 		{
 			sexo = prompt("Sexo inválido, por favor ingrese f ó m");
 		}
 
 		edad=prompt("Ingrese la edad");
-		if(edad<0||isNaN(edad))
+		while(edad<0||isNaN(edad))
 		{
 			edad=prompt("Edad inválida, ingrese la edad");
 		}
 
 		estadoCivil=prompt("Ingrese el estado civil");
-		if(estadoCivil!="soltero"&&estadoCivil!="casado"&&estadoCivil!="viudo")
+		while(estadoCivil!="soltero"&&estadoCivil!="casado"&&estadoCivil!="viudo")
 		{
 			estadoCivil=prompt("ERROR: Ingrese el estado civil válido");
 		}
 
 		temperatura=prompt("Ingrese la temperatura del pasajero");
 		temperatura=parseFloat(temperatura);
-		if(temperatura<0||isNaN(temperatura))
+		while(temperatura<0||isNaN(temperatura))
 		{
 			temperatura=prompt("ERROR: Ingrese la temperatura válida");
 			temperatura=parseFloat(temperatura);
 		}
-//persona con mayor temperatura
-		if(flagMayorTemperatura==0||temperatura>mayorTemperatura)
-			mayorTemperatura=temperatura;
-			nombreMayorTemperatura=nombre;
-			flagMayorTemperatura=1;
 
-		respuesta=prompt("¿Hay más pasajeros por cargar al vuelo? si/no");	
-//cantidad solteros
-		if(sexo=="m"||estadoCivil=="soltero")
+		respuesta=prompt("¿Hay más pasajeros por cargar al vuelo? si/no");
 
+		switch(estadoCivil)
 		{
-			contadorSoltero++;
-			sumaEdadSolteros=sumaEdadSolteros+edad;
-		}
-		else
-		{
-//cuantos viudos mayores de edad
-			if(sexo=="m"||estadoCivil=="viudo"||edad<18)
-			{
-				contadorViudo++;
-			}
-			else
-			{
-				if(sexo=="m"||estadoCivil=="casado")				
-				{
-					contadorCasado++;
-				}
-			}
-		}
-//tercera edad con mas temperatura
-		while(edad<60||temperatura<38)
-		{
-			contadorMayoresViudos;
-		}
+		case "viudo":
+			contadorViudo++;
+			sumaEdadViudo=sumaEdadViudo+edad;
+		break;
 
+		case "soltero":
+			contadorSoltero;
+			sumaEdadSoltero=sumaEdadSoltero+edad;
+		break;
+
+		case "casado":
+			contadorCasado++;
+			sumaEdadCasado=sumaEdadCasado+edad;
+		break;
+		}
+		
 	}
-
-	promedioEdad=sumaEdadSolteros/contadorSoltero;
-
 	
+
+	console.log(contadorViudo);
+	console.log(sumaEdadViudo);
+	console.log(contadorSoltero);
+	console.log(sumaEdadSoltero);
+	console.log(contadorCasado);
+	console.log(sumaEdadCasado);
 }
 /*Bienvenidos.
-En el ingreso a un viaje en avion nos solicitan nombre , edad, sexo("f" o "m") y 
+En el ingreso a un viaje en avion nos solicitan nombre , edad, 
+sexo("f" o "m") y 
 estado civil("soltero", "casado" o "viudo")y temperatura corporal.
 a) El nombre de la persona con mas temperatura.
 b) Cuantos mayores de edad estan viudos
 c) La cantidad de hombres que hay solteros o viudos.
-d) cuantas personas de la tercera edad( mas de 60 años) , tienen mas de 38 de 
-temperatura
+d) cuantas personas de la tercera edad( mas de 60 años) , tienen mas 
+de 38 de temperatura
 e) El promedio de edad entre los hombres solteros.*/
