@@ -15,6 +15,14 @@ function mostrar()
 	var sumaSoltero;
 	var sumaCasado;
 
+	var mayorTemperatura;
+	var primerTemperatura;
+	var pasajeroMasTemp;
+	var mayoresViudos;
+	var promedioEdadSolteros;
+	var hombresSolteros;
+	var hombresViudos;
+
 	i=0;
 	respuesta="si";
 
@@ -24,6 +32,10 @@ function mostrar()
 	sumaEdadViudo=0;
 	sumaEdadSoltero=0;
 	sumaEdadCasado=0;
+	primerTemperatura=true;
+	mayoresViudos=0;
+	hombresSolteros=0;
+	hombresViudos=0;
 
 	while(respuesta=="si")
 	{
@@ -38,9 +50,11 @@ function mostrar()
 		}
 
 		edad=prompt("Ingrese la edad");
+		edad=parseInt(edad);
 		while(edad<0||isNaN(edad))
 		{
 			edad=prompt("Edad inválida, ingrese la edad");
+			edad=parseInt(edad);
 		}
 
 		estadoCivil=prompt("Ingrese el estado civil");
@@ -51,41 +65,61 @@ function mostrar()
 
 		temperatura=prompt("Ingrese la temperatura del pasajero");
 		temperatura=parseFloat(temperatura);
+		if(primerTemperatura==true||temperatura>mayorTemperatura)
+		{
+			mayorTemperatura=temperatura;
+			pasajeroMasTemp=nombre;
+		}
 		while(temperatura<0||isNaN(temperatura))
 		{
 			temperatura=prompt("ERROR: Ingrese la temperatura válida");
 			temperatura=parseFloat(temperatura);
 		}
 
-		respuesta=prompt("¿Hay más pasajeros por cargar al vuelo? si/no");
-
 		switch(estadoCivil)
 		{
-		case "viudo":
-			contadorViudo++;
-			sumaEdadViudo=sumaEdadViudo+edad;
-		break;
+			case "viudo":
+				contadorViudo++;
+				sumaEdadViudo=sumaEdadViudo+edad;
+				if(sexoIngresado=="m")
+				{
+					hombresViudos++;
+				}
+				if(edad>18)
+					mayoresViudos++;
 
-		case "soltero":
-			contadorSoltero;
-			sumaEdadSoltero=sumaEdadSoltero+edad;
-		break;
+			break;
 
-		case "casado":
-			contadorCasado++;
-			sumaEdadCasado=sumaEdadCasado+edad;
-		break;
+			case "soltero":
+				contadorSoltero++;
+				
+				if(sexoIngresado=="m")
+				{
+					hombresSolteros++;
+					sumaEdadSoltero=sumaEdadSoltero+edad;
+				}
+
+			break;
+
+			case "casado":
+				contadorCasado++;
+				sumaEdadCasado=sumaEdadCasado+edad;
+			break;
 		}
-		
-	}
-	
 
-	console.log(contadorViudo);
-	console.log(sumaEdadViudo);
-	console.log(contadorSoltero);
-	console.log(sumaEdadSoltero);
-	console.log(contadorCasado);
-	console.log(sumaEdadCasado);
+
+		respuesta=prompt("¿Hay más pasajeros por cargar al vuelo? si/no");
+
+	}
+	promedioEdadSolteros=sumaSoltero/contadorSoltero;
+
+	document.write("A- El pasajero con mayor temperatura es: "+ pasajeroMasTemp+"<br>");
+	document.write("B- La cantidad de mayores de edad viudos: "+ mayoresViudos+"<br>");
+	document.write("C- La cantidad de pasajeros viudos es: "+contadorViudo+"<br>");
+	document.write("D- La cantidad de hombres solteros es:"+hombresSolteros+" y viudos: "+hombresViudos+"<br>");
+	document.write("E- El promedio de edad de hombres solteros "+ promedioEdadSolteros+"<br>");
+
+
 }
 /*Bienvenidos.
 En el ingreso a un viaje en avion nos solicitan nombre , edad, 

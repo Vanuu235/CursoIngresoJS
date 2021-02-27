@@ -6,11 +6,13 @@ function mostrar()
 	var cal;
 	var cemento;
 	var cantidadBolsas;
+	var cantidadTotalBolsas;
 	var respuesta;
 	var sumaBolsas;
 	var precio;					/*falta NO mostrar el precio con decuento si son menos de 10*/
 	var precioTotal;
 	var precioConDescuento;
+	var descuento;
 	var contadorArena;
 	var contadorCal;
 	var contadorCemento;
@@ -92,17 +94,25 @@ function mostrar()
 
 		respuesta=prompt("¿Desea seguir agregando productos? si/no");
 	}
-		if(sumaBolsas<10||sumaBolsas>30)
+		cantidadTotalBolsas=sumaCemento+sumaCal+sumaArena;
+
+		if(cantidadTotalBolsas<30)
 		{
-			precioConDescuento=precioTotal-(precioTotal*15/100);
+				descuento=25;
 		}
 		else
 		{
-			if(sumaBolsas<30)
+			if(cantidadTotalBolsas<10)
 			{
-				precioConDescuento=precioTotal-(precioTotal*25/100);
+				descuento=15;	
+			}
+			else
+			{
+				descuento=0;
+				alert("No se aplico ningún descuento");
 			}
 		}
+		precioConDescuento=precioTotal-(precioTotal*descuento/100);
 
 		if(sumaArena>sumaCal&&sumaArena>sumaCemento)
 		{
