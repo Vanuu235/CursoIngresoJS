@@ -41,6 +41,7 @@ function mostrar()
 	{
 		i++;
 		nombre=prompt("Ingrese el nombre del pasajero");
+		nombre=nombre.toLowerCase();
 
 		sexo=prompt("ingrese f ó m");
 		sexo=sexo.toLowerCase();
@@ -85,7 +86,7 @@ function mostrar()
 				{
 					hombresViudos++;
 				}
-				if(edad>18)
+				if(edad>17)
 					mayoresViudos++;
 
 			break;

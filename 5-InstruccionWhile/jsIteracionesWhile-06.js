@@ -6,8 +6,25 @@ function mostrar()
 
 	contador=0;
 	acumulador=0;
+
+
+do
+{
+	numeroIngresado=prompt("ingrese un numero");
+	numeroIngresado=parseInt(numeroIngresado);
+
+	acumulador=acumulador+numeroIngresado;
+	contador=contador+1;
+	respuesta=prompt("Desea continuar?");
+
+}while(respuesta=="si");
+	promedio=acumulador/contador;
+
+	txtIdSuma.value=acumulador;
+	txtIdPromedio.value=promedio;
+
 	
-	while(contador < 5)
+	/*while(contador < 5)
 	{
 		numeroIngresado=prompt("Por favor, ingrese un número");
 		numeroIngresado=parseInt(numeroIngresado);
@@ -16,5 +33,5 @@ function mostrar()
 	}
 	
 	txtIdSuma.value=acumulador;
-	txtIdPromedio.value=acumulador/5;
-}//FIN DE LA FUNCIÓN
+	txtIdPromedio.value=acumulador/5;*/
+}

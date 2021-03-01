@@ -17,7 +17,7 @@ function mostrar()
 	var cantidadAlcoholBarato;
 	var fabricanteAlcoholBarato;
 	var precioAlcoholBarato;
-	var flagAlcohol;
+	//var flagAlcohol;
 	var mensajeAlcohol;
 //consigna mas comprado
 	var mayorCantidad;
@@ -66,16 +66,15 @@ function mostrar()
 	switch(producto)
 	{
 		case "alcohol":
-			acumuladorAlcohol= acumuladorAlcohol + cantidad;//cuantos de este producto se compraron
-			contadorAlcohol++; //cuantas veces entra
-
-				if(flagAlcohol==0 || precioAlcoholBarato>precio)
-				{
-					precioAlcoholBarato=precio;
-					cantidadAlcoholBarato=cantidad;
-					fabricanteAlcoholBarato=fabricante;
-					flagAlcohol=1;
-				}
+			if(flagAlcohol==0||precio>precioAlcoholBarato)
+			{
+				precioAlcoholBarato=precio;
+				cantidadAlcoholBarato=cantidad;
+				fabricanteAlcoholBarato=fabricante;
+				flagAlcohol=1;
+			}
+			contadorAlcohol++;
+			acumuladorAlcohol= acumuladorAlcohol+ cantidad;
 
 		break;
 
@@ -97,7 +96,7 @@ function mostrar()
 	{
 
 		mayorCantidad="alcohol";
-		promedioCompra= mayorCantidad/contadorAlcohol;
+		promedioCompra= acumuladorAlcohol/contadorAlcohol;
 	}
 
 	else
@@ -105,16 +104,23 @@ function mostrar()
 		if(acumuladorBarbijo>acumuladorJabon&&acumuladorBarbijo>=acumuladorAlcohol)
 		{
 			mayorCantidad="barbijo";
-			promedioCompra= mayorCantidad/contadorBarbijo;
+			promedioCompra= acumuladorBarbijo/contadorBarbijo;
 		}
 		else
 		{
 			mayorCantidad="jabon";
-			promedioCompra= mayorCantidad/contadorJabon;
+			promedioCompra= acumuladorJabon/contadorJabon;
 		}
 	}
+	if(contadorAlcohol==0)
+	{
+		document.write("No se compraron alcoholes");	
+	}
+	else
+	{
+		document.write("El alcohol más barato fue el de: " + fabricanteAlcoholBarato+" y se compraron " +cantidadAlcoholBarato+ "<br>");
+	}
 	
-	document.write("El alcohol más barato fue el de: " + fabricanteAlcoholBarato+" y se compraron " +cantidadAlcoholBarato+ "<br>");
 	document.write("El producto mas comprado fue: " + mayorCantidad +"<br>"+"Valiendo un promedio por compra de: " + promedioCompra + "<br>");
 	document.write("La cantidad de jabones fue:" + acumuladorJabon);//no muestra
 
@@ -129,3 +135,103 @@ Se debe Informar al usuario lo siguiente:
 a) Del más barato de los alcohol, la cantidad de unidades y el fabricante
 b) Del tipo con mas unidades, el promedio por compra
 c) Cuántas unidades de jabones hay en total*/
+/*function mostrar()
+{//declarar variables a pedir
+	var cantidad;
+	var fabricante;
+	var marca;
+	var producto;
+	var precio;
+	var i;//control
+	var alcoholMasBarato;
+	var minimoPrecioAlcohol;
+	var cantidadAlcoholBarato;
+	var fabricanteAlcoholBarato;
+	var promedio;
+	var productoPromedio;
+
+	var cantidadAlcohol;
+	var acumuladorAlcohol;
+	var cantidadJabon;
+	var acumuladorJabon;
+	var cantidadBarbijo;
+	var acumuladorBarbijo;
+
+	alcoholMasBarato=true;
+	cantidadAlcohol=0;
+	acumuladorAlcohol=0;
+	cantidadJabon=0;
+	acumuladorJabon=0;
+	cantidadBarbijo=0;
+	acumuladorBarbijo=0;
+
+	for(i=0; i<5;i++)
+	{
+		producto=prompt("Ingrese producto");
+		producto=producto.toLowerCase();
+		while(producto!="barbijo"&&producto!="jabon"&&producto!="alcohol")
+		{
+			producto=prompt("ERROR:Ingrese producto valido");
+		}
+
+		precio=prompt("Ingrese precio");
+		precio=parseFloat(precio);
+		while(precio<100||precio>300)
+		{
+			precio=prompt("Ingrese precio");
+			precio=parseFloat(precio);
+		}
+
+		cantidad=prompt("Ingrese cantidad");
+		cantidad=parseInt(cantidad);
+		while(cantidad<1||cantidad>1000)
+		{
+			cantidad=prompt("ERROR: Ingrese cantidad");
+			cantidad=parseInt(cantidad);
+		}
+
+		marca= prompt("Ingrese marca");
+		fabricante= prompt(fabricante);
+	
+	}
+	switch(producto)
+	{
+		case "alcohol":
+			if(cantidadAlcohol==0||precio<minimoPrecioAlcohol)
+			{
+				minimoPrecioAlcohol=precio;
+				cantidadAlcoholBarato=cantidad;
+				fabricanteAlcoholBarato=fabricante;
+			}
+			cantidadAlcohol++;
+			acumuladorAlcohol=+ cantidad;
+		break;
+
+		case "barbijo":
+			cantidadBarbijo++;
+			acumuladorBarbijo=+ cantidad;
+		break;
+
+		case "jabon":
+			cantidadJabon++;
+			acumuladorJabon=+ cantidad
+		break;
+	}
+	if(acumuladorJabon>acumuladorBarbijo&&acumuladorJabon>acumuladorAlcohol)
+	{
+		productoPromedio="jabon";
+		promedio=acumuladorJabon/cantidadJabon;
+	}
+	else
+	{
+		if(acumuladorBarbijo>acumuladorAlcohol)
+		{
+			productoPromedio="barbijo";
+			promedio=acumuladorBarbijo/cantidadBarbijo;
+		}
+	}
+	if(cantidadAlcohol!=0)
+	{
+
+	}
+}*/

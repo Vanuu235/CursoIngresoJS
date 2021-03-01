@@ -21,6 +21,7 @@ contadorIntentos=0;
 function comenzar()
 {	 
 	numeroSecreto=Math.floor(Math.random()*100)+1;
+	console.log(numeroSecreto);
 }
 
 function verificar()
@@ -28,9 +29,45 @@ function verificar()
 	numeroIngresado=txtIdNumero.value;
 	numeroIngresado=parseInt(numeroIngresado);
 	contadorIntentos++;
-	positivo=numeroIngresado!=numeroSecreto;
-	
+	prueba=numeroIngresado!=numeroSecreto;
 
+
+		switch(prueba)
+		{
+			case "1":
+				mensaje="usted es un Psíquico";
+			break;
+	
+			case "2":
+				mensaje="excelente percepción";
+			break;
+
+			case "3":
+				mensaje="Esto es suerte";
+			break;
+
+			case "4":
+				mensaje="Excelente técnica";
+			break;
+
+			case "5":
+				mensaje="usted está en la media";
+			break;
+
+			case "6":
+			case "7":
+			case "8":
+			case "9":
+			case "10":
+				mensaje="falta técnica”";
+			break;
+
+			/*default:
+				mensaje="afortunado en el amor!!";*/
+		
+			
+		}
+	
 	alert(mensaje);
 	txtIdIntentos.value=contadorIntentos;
 }

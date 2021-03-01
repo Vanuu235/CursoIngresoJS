@@ -1,8 +1,13 @@
 function mostrar()
 {
 
-	var repetciones = prompt("ingrese el número de repeticiones");
-	alert("ok");
+	var repeticiones;
+	var i;
+
+	repeticiones = prompt("ingrese el número de repeticiones");
+	repeticiones = parseInt(repeticiones);
+
+	for(1=0)
 
 
-}//FIN DE LA FUNCIÓN
+}

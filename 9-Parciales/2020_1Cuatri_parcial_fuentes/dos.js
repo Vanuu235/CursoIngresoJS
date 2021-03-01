@@ -9,7 +9,7 @@ function mostrar()
 	var cantidadTotalBolsas;
 	var respuesta;
 	var sumaBolsas;
-	var precio;					/*falta NO mostrar el precio con decuento si son menos de 10*/
+	var precio;					
 	var precioTotal;
 	var precioConDescuento;
 	var descuento;
@@ -106,11 +106,6 @@ function mostrar()
 			{
 				descuento=15;	
 			}
-			else
-			{
-				descuento=0;
-				alert("No se aplico ningún descuento");
-			}
 		}
 		precioConDescuento=precioTotal-(precioTotal*descuento/100);
 
@@ -130,7 +125,12 @@ function mostrar()
 			}
 		}
 	document.write("El total de la compra es de: "+precioTotal+"<br>");
-	document.write("Aplicando el descuento por llevar más unidades debe abonar: "+precioConDescuento+"<br>");
+	
+	if(cantidadTotalBolsas>10)
+	{
+		document.write("Aplicando el descuento por llevar más unidades debe abonar: "+precioConDescuento+"<br>");
+	}
+	
 	document.write("El producto con más bolsas compradas fue: "+mayorCantidad+"<br>");
 	document.write("El producto más caro fue: "+productoMayorPrecio + " valiendo: "+MayorPrecio);
 
