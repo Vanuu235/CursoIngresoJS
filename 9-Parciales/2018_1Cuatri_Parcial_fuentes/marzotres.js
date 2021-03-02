@@ -260,4 +260,3 @@ function mostrar()
 	document.write("J - De los tipos de stock , cual tiene mas productos nacionales "+ultimoMayor+"<br>");
 	
 }
- 
